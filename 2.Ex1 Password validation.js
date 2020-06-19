@@ -32,9 +32,24 @@ The belows are invalids because
   - "tytT3729." is valid as an individual password, but already appeared in the password array
   - "12qw"      doesn't contain uppercase letter, special symbol and less than 5 characters long
 */
+const passwords = ["tytT3729.", "fhD!yrjj", "ttkTuwer3", "DVYYEYY!5", "qwbfj76%", "Pl3!", "tytT3729.", "12qw"];
 
-function validatePasswords(passwords) {}
+var conditions = /(?=\S*\d)(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[#!.$%])\S{5,}/;
 
+let validatePasswords = passwords
+
+.map((password, index) => {
+ 
+    if (conditions.test(password) && passwords.indexOf(password) === index) {
+      return true
+    } else {
+      return false
+    }
+ });
+
+ console.log(validatePasswords)
+
+//expected results is [4] is false
 /* ======= TESTS - DO NOT MODIFY ===== */
 
 const passwords1 = ["Se%5", "TktE.TJTU", "384#HsHF", "dvyyeyy!5", "tryT3729"];
